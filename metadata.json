@@ -1,0 +1,38 @@
+{
+  "name": "paynopain-cloudwatch",
+  "version": "0.1",
+  "author": "paynopain",
+  "summary": "Installs AWS Cloudwatch",
+  "license": "MIT",
+  "source": "https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/paynopain-cloudwatch",
+  "project_page": "https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/paynopain-cloudwatch",
+  "issues_url": "https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/paynopain-cloudwatch",
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease":[ "7.0" ]
+    },
+    {
+      "operatingsystem":"CentOS",
+      "operatingsystemrelease":[ "7.0" ]
+    },
+    {
+      "operatingsystem":"Amazon",
+      "operatingsystemrelease":[ "2016.09", "2017.09" ]
+    },
+    {
+      "operatingsystem":"Ubuntu",
+      "operatingsystemrelease":[ "14.04", "16.04" ]
+    },
+    {
+      "operatingsystem":"Debian",
+      "operatingsystemrelease":[ "7", "8", "9" ]
+    }
+  ],
+  "tags": [ "monitoring", "aws", "cloudwatch" ],
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppet/archive","version_requirement":">= 1.2.0 < 2.0.0"}
+  ],
+  "data_provider": null
+}

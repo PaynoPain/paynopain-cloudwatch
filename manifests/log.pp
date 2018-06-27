@@ -1,10 +1,10 @@
 define cloudwatch::log (
-  $path            = undef,
-  $streamname      = '{instance_id}',
-  $datetime_format = '%b %d %H:%M:%S',
-  $log_group_name  = undef,
+  $path                     = undef,
+  $streamname               = '{instance_id}',
+  $datetime_format          = '%b %d %H:%M:%S',
+  $log_group_name           = undef,
   $multi_line_start_pattern = undef,
-){
+) {
   if $path == undef {
     $log_path = $name
   } else {
@@ -15,6 +15,10 @@ define cloudwatch::log (
     $real_log_group_name = $name
   } else {
     $real_log_group_name = $log_group_name
+  }
+
+  concat { '/etc/awslogs/awslogs.conf':
+    ensure => present,
   }
 
   concat::fragment { "cloudwatchlogs_fragment_${name}":

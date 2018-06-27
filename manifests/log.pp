@@ -17,10 +17,6 @@ define cloudwatch::log (
     $real_log_group_name = $log_group_name
   }
 
-  concat { '/etc/awslogs/awslogs.conf':
-    ensure => present,
-  }
-
   concat::fragment { "cloudwatchlogs_fragment_${name}":
     target  => '/etc/awslogs/awslogs.conf',
     content => template('cloudwatch/awslogs_log.erb'),

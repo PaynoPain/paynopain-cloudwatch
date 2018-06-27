@@ -21,5 +21,4 @@ define cloudwatch::log (
     target  => '/etc/awslogs/awslogs.conf',
     content => template('cloudwatch/awslogs_log.erb'),
   }
-
 }

@@ -131,14 +131,15 @@ class cloudwatch (
 ) {
 
   $install_dir = "${install_target}/aws-scripts-mon"
-  $zip_name    = 'CloudWatchMonitoringScripts-1.2.2.zip'
-  $zip_url     = "http://aws-cloudwatch.s3.amazonaws.com/downloads/${zip_name}"
+  $zip_name = 'CloudWatchMonitoringScripts-1.2.2.zip'
+  $zip_url = "http://aws-cloudwatch.s3.amazonaws.com/downloads/${zip_name}"
 
   if $manage_dependencies {
     # Establish which packages are needed, depending on the OS family
     case $::operatingsystem {
       /(RedHat|CentOS)$/: {
-        $packages = ['perl-Switch', 'perl-DateTime', 'perl-Sys-Syslog', 'perl-LWP-Protocol-https', 'perl-Digest-SHA', 'unzip', 'cronie']
+        $packages = ['perl-Switch', 'perl-DateTime', 'perl-Sys-Syslog', 'perl-LWP-Protocol-https', 'perl-Digest-SHA',
+          'unzip', 'cronie']
       }
       'Amazon': {
         $packages = ['perl-Switch', 'perl-DateTime', 'perl-Sys-Syslog', 'perl-LWP-Protocol-https', 'unzip', 'cronie']
@@ -259,30 +260,22 @@ class cloudwatch (
 
   if ($manage_dependencies) {
     cron::job { 'cloudwatch':
-      ensure   => present,
-      name     => 'Push extra metrics to Cloudwatch',
-      minute   => $cron_min,
-      hour     => '*',
-      month => '*',
-      month    => '*',
-      weekday  => '*',
-      command  => regsubst($cmd, '\s+', ' ', 'G'),
-      require  => [
+      ensure  => present,
+      name    => 'Push extra metrics to Cloudwatch',
+      minute  => $cron_min,
+      command => regsubst($cmd, '\s+', ' ', 'G'),
+      require => [
         Archive[$zip_name],
         Package[$packages]
       ]
     }
   } else {
     cron::job { 'cloudwatch':
-      ensure   => present,
-      name     => 'Push extra metrics to Cloudwatch',
-      minute   => $cron_min,
-      hour     => '*',
-      month => '*',
-      month    => '*',
-      weekday  => '*',
-      command  => regsubst($cmd, '\s+', ' ', 'G'),
-      require  => Archive[$zip_name]
+      ensure  => present,
+      name    => 'Push extra metrics to Cloudwatch',
+      minute  => $cron_min,
+      command => regsubst($cmd, '\s+', ' ', 'G'),
+      require => Archive[$zip_name]
     }
   }
 }

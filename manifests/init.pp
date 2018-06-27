@@ -256,8 +256,4 @@ class cloudwatch (
       require => Archive[$zip_name]
     }
   }
-
-  concat { '/etc/awslogs/awslogs.conf':
-    ensure => present,
-  }
 }

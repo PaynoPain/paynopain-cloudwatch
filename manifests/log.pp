@@ -4,7 +4,6 @@ define cloudwatch::log (
   $datetime_format = '%b %d %H:%M:%S',
   $log_group_name  = undef,
   $multi_line_start_pattern = undef,
-
 ){
   if $path == undef {
     $log_path = $name

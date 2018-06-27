@@ -4,9 +4,8 @@
   "author": "paynopain",
   "summary": "Installs AWS Cloudwatch",
   "license": "MIT",
-  "source": "https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/paynopain-cloudwatch",
-  "project_page": "https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/paynopain-cloudwatch",
-  "issues_url": "https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/paynopain-cloudwatch",
+  "source": "https://github.com/PaynoPain/paynopain-cloudwatch.git",
+  "project_page": "https://github.com/PaynoPain/paynopain-cloudwatch",
   "operatingsystem_support": [
     {
       "operatingsystem":"RedHat",

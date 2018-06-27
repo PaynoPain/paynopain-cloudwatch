@@ -9,20 +9,8 @@
 #
 # == Parameters
 #
-# [*access_key*]
-#   IAM access key ID for a user that has permission to push metrics to Cloudwatch.
-#   Default: undef
-#
-# [*secret_key*]
-#   IAM secret access key for a user that has permission to push metrics to Cloudwatch.
-#   Default: undef
-#
 # [*credential_file*]
 #   Path to file containing IAM user credentials.
-#   Default: undef
-#
-# [*iam_role*]
-#   IAM role used to provide AWS credentials.
 #   Default: undef
 #
 # [*enable_mem_util*]
@@ -97,17 +85,7 @@
 # [*manage_dependencies*]
 #   Whether or not this module should manage the installation of the packages which the AWS scripts depend on.
 #   Default: true
-#
-# Authors
-# -------
-#
-# Joe Nyland <joenyland@me.com>
-#
-# Copyright
-# ---------
-#
-# Copyright 2018 Joe Nyland, unless otherwise noted.
-#
+
 class cloudwatch (
   $credential_file         = undef,
   $enable_mem_util         = true,

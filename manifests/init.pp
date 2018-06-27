@@ -172,8 +172,6 @@ class cloudwatch (
   }
 
   if $credential_file {
-    if $access_key and $secret_key { fail('$credential_file cannot be used with $access_key and $secret_key') }
-    if $iam_role { fail('$credential_file cannot be used with $iam_role') }
     $creds_path = "--aws-credential-file=${credential_file}"
   } else {
     $creds_path = ''
@@ -260,7 +258,7 @@ class cloudwatch (
           ${aggregated_val} ${auto_scaling_val}"
 
   if ($manage_dependencies) {
-    cron { 'cloudwatch':
+    cron::job { 'cloudwatch':
       ensure   => present,
       name     => 'Push extra metrics to Cloudwatch',
       minute   => $cron_min,
@@ -275,7 +273,7 @@ class cloudwatch (
       ]
     }
   } else {
-    cron { 'cloudwatch':
+    cron::job { 'cloudwatch':
       ensure   => present,
       name     => 'Push extra metrics to Cloudwatch',
       minute   => $cron_min,

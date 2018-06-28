@@ -256,4 +256,20 @@ class cloudwatch (
       require => Archive[$zip_name]
     }
   }
+
+  concat { '/etc/awslogs/awslogs.conf':
+      ensure         => 'present',
+      owner          => 'root',
+      group          => 'root',
+      mode           => '0644',
+      ensure_newline => true,
+      warn           => true,
+      require        => File['/etc/awslogs'],
+  }
+  
+  concat::fragment { 'awslogs-header':
+      target  => '/etc/awslogs/awslogs.conf',
+      content => template('cloudwatch/awslogs_header.erb'),
+      order   => '00',
+  }
 }

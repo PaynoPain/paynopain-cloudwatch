@@ -257,7 +257,7 @@ class cloudwatch (
     }
   }
 
-  concat_file { '/etc/awslogs/awslogs.conf':
+  concat::concat_file { '/etc/awslogs/awslogs.conf':
       tag            => '_etc_awslogs_awslogs.conf',
       ensure         => 'present',
       owner          => 'root',

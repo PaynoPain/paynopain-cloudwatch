@@ -156,7 +156,7 @@ class cloudwatch (
           --from-cron ${memory_units_val} ${disk_space_units_val} ${creds_path} ${credentials} ${iam_role_val}
           ${mem_util} ${mem_used} ${mem_avail} ${swap_util} ${swap_used}
           ${disk_path_val} ${disk_space_util_val} ${disk_space_used_val} ${disk_space_avail_val}
-          ${aggregated_val} ${auto_scaling_val}"
+          ${aggregated_val} ${auto_scaling_val} > /dev/null 2>&1"
 
   if ($manage_dependencies) {
     cron::job { 'cloudwatch':
